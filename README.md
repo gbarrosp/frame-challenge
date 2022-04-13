@@ -25,13 +25,13 @@ API desenvolvida em Django como parte do desafio técnico para a Framework
 ### Auth [POST]
 Para gerar o token de autenticação  
 `localhost:8000/api/auth`
-#### Parametros
+#### Body
 - username: admin
 - password: admin
   
 ### Desafio [GET]
 Retorno dos dados solicitados  
 `localhost:8000/api/desafio`
-#### Parametros
+#### Header
 - Authorization: Token 5c3e17aa5e680f101b47cd7da5fc5d73135bd1ca
 

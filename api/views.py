@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
 
 logger = logging.getLogger(__name__)
 
@@ -25,4 +26,4 @@ class ChallengeView(APIView):
             logger.info(raw)
             return HttpResponse(json.dumps(data), content_type="application/json")
         except Exception as e:
-            return HttpResponse(json.dumps({'error': {'reason': str(e)}}), status=500, content_type="application/json")
+            return HttpResponse(json.dumps({'error': {'reason': str(e)}}), status=status.HTTP_500_INTERNAL_SERVER_ERROR, content_type="application/json")
