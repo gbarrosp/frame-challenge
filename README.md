@@ -10,7 +10,7 @@ API desenvolvida em Django como parte do desafio técnico para a Framework
 - pip
 - Docker (Para utilizar o modo 2)
 ### Modo 1
-- Inicie um terminal na raíz do projeto
+- Inicie um terminal na raíz do projeto e execute os comandos
 > pip install virtualenv  
 > virtualenv venv  
 > Windows: venv\Scripts\activate || unix: source venv/bin/activate  
@@ -18,17 +18,18 @@ API desenvolvida em Django como parte do desafio técnico para a Framework
 > python manage.py runserver
 
 ### Modo 2 - Docker
-- Inicie um terminal no diretório docker
+- Inicie um terminal no diretório docker e execute os comandos
+> docker-compose build
 > docker-compose up
 ## Endpoints
-### Auth  
+### Auth [POST]
 Para gerar o token de autenticação  
 `localhost:8000/api/auth`
 #### Parametros
 - username: admin
 - password: admin
   
-### Desafio
+### Desafio [GET]
 Retorno dos dados solicitados  
 `localhost:8000/api/desafio`
 #### Parametros

@@ -13,19 +13,16 @@ class ChallengeView(APIView):
 
     def get(self, request):
         try:
-            if request.method == 'GET':
-                response = requests.get('https://jsonplaceholder.typicode.com/todos/', stream=True)
+            response = requests.get('https://jsonplaceholder.typicode.com/todos/', stream=True)
 
-                raw = response.json()
-                data = list(map(lambda x: {'id': x['id'], 'title': x['title']}, raw[:5]))
-                status_code = response.status_code
-                dt_now = datetime.now().strftime('%H:%M:%S %d/%m/%Y')
+            raw = response.json()
+            data = list(map(lambda x: {'id': x['id'], 'title': x['title']}, raw[:5]))
+            status_code = response.status_code
+            dt_now = datetime.now().strftime('%H:%M:%S %d/%m/%Y')
 
-                logger.info('Timestamp: {}'.format(dt_now))
-                logger.info('Status code: {}'.format(status_code))
-                logger.info(raw)
-                return HttpResponse(json.dumps(data), content_type="application/json")
-            else:
-                return HttpResponse("Method not allowed")
+            logger.info('Timestamp: {}'.format(dt_now))
+            logger.info('Status code: {}'.format(status_code))
+            logger.info(raw)
+            return HttpResponse(json.dumps(data), content_type="application/json")
         except Exception as e:
-            return HttpResponse(json.dumps({'error': {'reason': str(e)}}), content_type="application/json")
+            return HttpResponse(json.dumps({'error': {'reason': str(e)}}), status=500, content_type="application/json")
